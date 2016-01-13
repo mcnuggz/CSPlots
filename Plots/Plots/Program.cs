@@ -13,10 +13,9 @@ namespace Plots
         {
 
             MathClass plotMath = new MathClass();
-            Fencing perimeter = new Fencing();
 
             plotMath.ReadLines("Plot.txt");
-            plotMath.TestPrint();
+            //plotMath.TestPrint();
             plotMath.GetOverlappedPlots();
             plotMath.FindPlotPerimeter();
             plotMath.FindPlotArea();

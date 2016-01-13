@@ -130,9 +130,39 @@ namespace Plots
         }
         public void FindPlotArea()
         {
-            //int area;
-            //area = width * height;
+            FindHeight();
+            FindWidth();
+            int area;
+            int totalArea = 0;
+            float bottleCount = 0;
+            string path = "total_fertilizer.txt";
+
+            foreach (var item in plots)
+            {
+                area = item.Width * item.Height;
+                totalArea += area;
+                bottleCount = totalArea / 2;
+            }
+            
+            using(StreamWriter writer = new StreamWriter(path))
+            {
+                writer.WriteLine("Total area: " + totalArea);
+                writer.WriteLine("Fertilizer bottles needed: " + bottleCount);
+            }
+
         }
-        
+        public void Rotate90()
+        {
+
+        }
+        public void Rotate180()
+        {
+
+        }
+        public void Rotate270()
+        {
+            Rotate90();
+            Rotate180();
+        }
     }
 }
