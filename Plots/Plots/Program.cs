@@ -11,14 +11,16 @@ namespace Plots
     {
         static void Main(string[] args)
         {
+
             MathClass plotMath = new MathClass();
-            FileHandling.ReadLines("Plot.txt");
-            plotMath.CreatePlot();
+            Fencing perimeter = new Fencing();
+
+            plotMath.ReadLines("Plot.txt");
+            plotMath.TestPrint();
             plotMath.GetOverlappedPlots();
-            plotMath.FindOverallPerimeter();
             plotMath.FindPlotPerimeter();
             plotMath.FindPlotArea();
-            Console.ReadLine();
+
         }
 
     }

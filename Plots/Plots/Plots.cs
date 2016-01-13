@@ -13,18 +13,17 @@ namespace Plots
         public int Y;
         public int Width;
         public int Height;
-        public int x1 { get; set; }
-        public int y1 { get; set; }
+        public int x1;
+        public int y1;
 
-        public List<Plots> plotList;
-
-        public Plots(int x, int y, int width, int height, int x1, int y1)
+        public Plots(int x, int y, int width, int height)
         {
             X = x;
             Y = y;
             Width = width;
             Height = height;
             x1 = x + height;
+
             y1 = y + width;            
         }
     }
