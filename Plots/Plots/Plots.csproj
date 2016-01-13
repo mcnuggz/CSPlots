@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fertilizer.cs" />
-    <Compile Include="PlotFencing.cs" />
+    <Compile Include="FileHandling.cs" />
+    <Compile Include="MathClass.cs" />
     <Compile Include="Plots.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

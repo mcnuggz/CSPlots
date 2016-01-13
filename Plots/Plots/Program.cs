@@ -11,10 +11,15 @@ namespace Plots
     {
         static void Main(string[] args)
         {
-            Plots plot = new Plots();
-            plot.ConvertToInt();
-            plot.Print();
+            MathClass plotMath = new MathClass();
+            FileHandling.ReadLines("Plot.txt");
+            plotMath.CreatePlot();
+            plotMath.GetOverlappedPlots();
+            plotMath.FindOverallPerimeter();
+            plotMath.FindPlotPerimeter();
+            plotMath.FindPlotArea();
             Console.ReadLine();
         }
+
     }
 }

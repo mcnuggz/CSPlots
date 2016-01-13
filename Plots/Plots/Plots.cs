@@ -9,31 +9,23 @@ namespace Plots
 {
     public class Plots
     {
-        protected int x;
-        protected int y;
-        protected int width;
-        protected int height;
+        public int X;
+        public int Y;
+        public int Width;
+        public int Height;
+        public int x1 { get; set; }
+        public int y1 { get; set; }
 
-        string plot = File.ReadAllText("Plot.txt");
-        public int[] plotInts;
+        public List<Plots> plotList;
 
-        public void Print()
+        public Plots(int x, int y, int width, int height, int x1, int y1)
         {
-
-            foreach (var item in plotInts)
-            {
-                Console.Write(item.ToString() + " ");
-            }
-
+            X = x;
+            Y = y;
+            Width = width;
+            Height = height;
+            x1 = x + height;
+            y1 = y + width;            
         }
-
-        public void ConvertToInt()
-        {
-            string[] tokens = plot.Split(',');
-
-            plotInts = Array.ConvertAll<string, int>(tokens, int.Parse);
-
-        }
-
     }
 }
