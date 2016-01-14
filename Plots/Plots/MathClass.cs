@@ -13,7 +13,6 @@ namespace Plots
         public static List<Plots> plots = new List<Plots>();
         public static List<int> plotPerimeter = new List<int>();
 
-
         public int width;
         public int height;
 
@@ -35,13 +34,6 @@ namespace Plots
             return height;
         }
 
-        public void TestPrint()
-        {
-            foreach (var item in plots)
-            {
-                Console.WriteLine(item.x1);
-            }
-        }
         public void ReadLines(string FileName)
         {
             foreach (string plot in File.ReadAllLines(FileName))
@@ -127,6 +119,16 @@ namespace Plots
         public void FindOverallPerimeter()
         {
             //int overallPerimeter;
+            int MaxX = plots.Max(maxX => maxX.x1);
+            int MaxY = plots.Max(maxY => maxY.y1);
+            int MinX = plots.Min(minX => minX.X);
+            int MinY = plots.Min(minY => minY.Y);
+            string path = "total_fencing.txt";
+
+            using(StreamWriter writer = new StreamWriter(path))
+            {
+                writer.WriteLine("{0},{1} and {2},{3}", MinX, MinY, MaxX, MaxY);
+            }
         }
         public void FindPlotArea()
         {
@@ -153,11 +155,11 @@ namespace Plots
         }
         public void Rotate90()
         {
-
+            // x1 = x + height  - width 
         }
         public void Rotate180()
         {
-
+            //x1 = x - 2(width)
         }
         public void Rotate270()
         {
