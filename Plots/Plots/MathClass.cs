@@ -55,13 +55,7 @@ namespace Plots
             Plots plot = new Plots(PlotPoints[0], PlotPoints[1], PlotPoints[2], PlotPoints[3]);
             plots.Add(plot);
         }
-        public void TestPrint()
-        {
-            foreach (Plots plot in plots)
-            {
-                Console.WriteLine(plot);
-            }
-        }
+
         public void GetOverlappedPlots()
         {
             string path = "overlapping_plots.txt";

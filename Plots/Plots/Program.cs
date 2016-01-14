@@ -15,7 +15,6 @@ namespace Plots
             MathClass plotMath = new MathClass();
 
             plotMath.ReadLines("Plot.txt");
-            plotMath.TestPrint();
             plotMath.GetOverlappedPlots();
             plotMath.FindOverallPerimeter();
             plotMath.FindPlotPerimeter();
