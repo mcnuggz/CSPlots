@@ -22,9 +22,8 @@ namespace Plots
             Y = y;
             Width = width;
             Height = height;
-            x1 = x + height;
-
-            y1 = y + width;            
+            x1 = x + width;
+            y1 = y + height;            
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Plots
 
         private int FindWidth()
         {
-            foreach (var item in plots)
+            foreach (Plots item in plots)
             {
                 width = item.Width;
             }
@@ -27,7 +27,7 @@ namespace Plots
 
         private int FindHeight()
         {
-            foreach (var item in plots)
+            foreach (Plots item in plots)
             {
                 height = item.Height;
             }
@@ -101,7 +101,7 @@ namespace Plots
             int perimeter;
             string path = "total_fencing.txt";
 
-            foreach (var item in plots)
+            foreach (Plots item in plots)
             {
                 perimeter = item.Height + item.Width * 2;
                 plotPerimeter.Add(perimeter);
@@ -109,13 +109,14 @@ namespace Plots
 
             using (StreamWriter writer = new StreamWriter(path))
             {
-                foreach (var item in plotPerimeter)
+                foreach (int item in plotPerimeter)
                 {
                     writer.WriteLine(item.ToString());
                 }
                 writer.Close();
             }
         }
+
         public void FindOverallPerimeter()
         {
             //int overallPerimeter;
@@ -125,9 +126,9 @@ namespace Plots
             int MinY = plots.Min(minY => minY.Y);
             string path = "total_fencing.txt";
 
-            using(StreamWriter writer = new StreamWriter(path))
+            using (StreamWriter writer = new StreamWriter(path))
             {
-                writer.WriteLine("{0},{1} and {2},{3}", MinX, MinY, MaxX, MaxY);
+                writer.WriteLine("{0},{1},{2},{3}", MinX, MinY, MaxX, MaxY);
             }
         }
         public void FindPlotArea()
@@ -139,7 +140,7 @@ namespace Plots
             float bottleCount = 0;
             string path = "total_fertilizer.txt";
 
-            foreach (var item in plots)
+            foreach (Plots item in plots)
             {
                 area = item.Width * item.Height;
                 totalArea += area;
@@ -153,18 +154,28 @@ namespace Plots
             }
 
         }
-        public void Rotate90()
+        public List<Plots> Rotate90(List<Plots> plots)
         {
-            // x1 = x + height  - width 
+            List<Plots> rotated90plots = new List<Plots>();
+            for (int i = 0; i < plots.Count-1; i++)
+            {
+                Plots rotatingPlot = plots[i];
+                rotated90plots.Add(rotatingPlot);
+                Plots bitterPlot = rotated90plots[i];
+                bitterPlot.x1 = rotatingPlot.x1 + rotatingPlot.Height - rotatingPlot.Width;
+                bitterPlot.y1 = rotatingPlot.y1 + rotatingPlot.Height - rotatingPlot.Width;
+            }
+            return plots;
         }
-        public void Rotate180()
+        public List<Plots> Rotate180(List<Plots> plots)
         {
             //x1 = x - 2(width)
+            return plots;
         }
-        public void Rotate270()
-        {
-            Rotate90();
-            Rotate180();
-        }
+        //public void Rotate270(List<Plots> plots)
+        //{
+        //    Rotate90(Rotate180(plots));
+        //    Rotate180(Rotate90(plots));
+        //}
     }
 }
