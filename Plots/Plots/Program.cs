@@ -15,14 +15,14 @@ namespace Plots
             MathClass plotMath = new MathClass();
 
             plotMath.ReadLines("Plot.txt");
+            plotMath.TestPrint();
             plotMath.GetOverlappedPlots();
             plotMath.FindOverallPerimeter();
             plotMath.FindPlotPerimeter();
             plotMath.FindPlotArea();
             plotMath.Rotate90(MathClass.plots);
-            plotMath.Rotate90(plotMath.Rotate180(MathClass.plots));
-            plotMath.Rotate180(MathClass.plots);
-            //plotMath.Rotate270(MathClass.plots);
+            //plotMath.Rotate180(plotMath.Rotate90(MathClass.plots));
+            //plotMath.Rotate270(plotMath.Rotate180(plotMath.Rotate90(MathClass.plots)));
 
         }
 
