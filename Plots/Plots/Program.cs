@@ -11,19 +11,13 @@ namespace Plots
     {
         static void Main(string[] args)
         {
-
             MathClass plotMath = new MathClass();
 
             plotMath.ReadLines("Plot.txt");
             plotMath.GetOverlappedPlots();
-            plotMath.FindOverallPerimeter();
-            plotMath.FindPlotPerimeter();
+            plotMath.FindPerimeter();
             plotMath.FindPlotArea();
             plotMath.Rotate90(MathClass.plots);
-            //plotMath.Rotate180(plotMath.Rotate90(MathClass.plots));
-            //plotMath.Rotate270(plotMath.Rotate180(plotMath.Rotate90(MathClass.plots)));
-
         }
-
     }
 }

@@ -94,43 +94,7 @@ namespace Plots
                 writer.Close();
             }
         }
-        public void FindPlotPerimeter()
-        {
-            FindWidth();
-            FindHeight();
-            int perimeter;
-            string path = "total_fencing.txt";
 
-            foreach (Plots item in plots)
-            {
-                perimeter = item.Height + item.Width * 2;
-                plotPerimeter.Add(perimeter);
-            }
-
-            using (StreamWriter writer = new StreamWriter(path))
-            {
-                foreach (int item in plotPerimeter)
-                {
-                    writer.WriteLine(item.ToString());
-                }
-                writer.Close();
-            }
-        }
-
-        public void FindOverallPerimeter()
-        {
-            //int overallPerimeter;
-            int MaxX = plots.Max(maxX => maxX.x1);
-            int MaxY = plots.Max(maxY => maxY.y1);
-            int MinX = plots.Min(minX => minX.X);
-            int MinY = plots.Min(minY => minY.Y);
-            string path = "total_fencing.txt";
-
-            using (StreamWriter writer = new StreamWriter(path))
-            {
-                writer.WriteLine("{0},{1},{2},{3}", MinX, MinY, MaxX, MaxY);
-            }
-        }
         public void FindPlotArea()
         {
             FindHeight();
@@ -153,6 +117,39 @@ namespace Plots
                 writer.WriteLine("Fertilizer bottles needed: " + bottleCount);
             }
 
+        }
+        public void FindPerimeter()
+        {
+            FindWidth();
+            FindHeight();
+            int perimeter;
+            int MaxX = plots.Max(maxX => maxX.x1);
+            int MaxY = plots.Max(maxY => maxY.y1);
+            int MinX = plots.Min(minX => minX.X);
+            int MinY = plots.Min(minY => minY.Y);
+            int MaxWidth = MaxX - MinX;
+            int MaxHeight = MaxY - MinY;
+            int OverallPerimeter = 2 * (MaxHeight + MaxWidth);
+            string path = "total_fencing.txt";
+
+            foreach (Plots plot in plots)
+            {
+                perimeter = plot.Height + plot.Width * 2;
+                plotPerimeter.Add(perimeter);
+            }
+
+            //int overallPerimeter;
+
+
+            using (StreamWriter writer = new StreamWriter(path))
+            {
+                foreach (int plot in plotPerimeter)
+                {
+                    writer.WriteLine("Plot area: " + plot.ToString() + " sq. feet");
+                }
+                writer.WriteLine("You need {0} feet of fencing.", OverallPerimeter);
+                writer.Close();
+            }
         }
         public List<Plots> Rotate90(List<Plots> plots)
         {
